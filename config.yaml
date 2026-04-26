@@ -1,0 +1,189 @@
+##CONFIG
+update-url: https://raw.githubusercontent.com/kirillpes/rocket-config/main/config.yaml
+
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: false
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+  nameserver:
+    - system
+
+rule-providers:
+  discord-domains:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/rules/domains_discord.list
+    interval: 86400
+  discord-ports:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/helmiau/clashrules/refs/heads/main/shadowrocket/Game_Discord_Ports.list
+    interval: 86400
+
+rules:
+  # Локальные адреса
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,192.0.0.0/24,DIRECT
+  - IP-CIDR,192.0.2.0/24,DIRECT
+  - IP-CIDR,192.88.99.0/24,DIRECT
+  - IP-CIDR,198.51.100.0/24,DIRECT
+  - IP-CIDR,203.0.113.0/24,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,255.255.255.255/32,DIRECT
+  - IP-CIDR,239.255.255.250/32,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN,localhost,DIRECT
+  - DOMAIN,captive.apple.com,DIRECT
+  - DOMAIN-SUFFIX,gosuslugi.ru,DIRECT
+
+  # Разное
+  - DOMAIN-SUFFIX,threads.net,PROXY
+
+  # TikTok
+  - DOMAIN-SUFFIX,tiktokv.com,PROXY
+  - DOMAIN-SUFFIX,tiktok.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn.com,PROXY
+
+  # Wirex
+  - DOMAIN-SUFFIX,wirexapp.com,PROXY
+  - DOMAIN-SUFFIX,wise.com,PROXY
+
+  # Claude
+  - DOMAIN-SUFFIX,claude.ai,PROXY
+  - DOMAIN,api.anthropic.com,PROXY
+  - DOMAIN-SUFFIX,anthropic.ai,PROXY
+  - DOMAIN-SUFFIX,claudeusercontent.com,PROXY
+  - DOMAIN-SUFFIX,anthropic-api.com,PROXY
+
+  # ChatGPT & AI tools
+  - DOMAIN,api.statsig.com,PROXY
+  - DOMAIN,static.cloudflareinsights.com,PROXY
+  - DOMAIN,chat.openai.com.cdn.cloudflare.net,PROXY
+  - DOMAIN,o33249.ingest.sentry.io,PROXY
+  - DOMAIN,openai-api.arkoselabs.com,PROXY
+  - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,PROXY
+  - DOMAIN,openaicomproductionae4b.blob.core.windows.net,PROXY
+  - DOMAIN,production-openaicom-storage.azureedge.net,PROXY
+  - DOMAIN-SUFFIX,chatgpt.com,PROXY
+  - DOMAIN-SUFFIX,openai.com,PROXY
+  - DOMAIN-SUFFIX,superwhisper.com,PROXY
+  - DOMAIN-SUFFIX,recraft.ai,PROXY
+  - DOMAIN-SUFFIX,adobe.com,PROXY
+  - DOMAIN-SUFFIX,gemini.google.com,PROXY
+  - DOMAIN-SUFFIX,googleapis.com,PROXY
+  - DOMAIN-SUFFIX,cerebrium.ai,PROXY
+
+  # Misc
+  - DOMAIN-SUFFIX,gallup.com,PROXY
+  - DOMAIN-SUFFIX,pornhub.org,PROXY
+  - DOMAIN-SUFFIX,metacritic.com,PROXY
+  - DOMAIN-SUFFIX,gitlab.com,PROXY
+  - DOMAIN,spotify.com,PROXY
+  - DOMAIN,bol.com,PROXY
+
+  # Framer
+  - DOMAIN-SUFFIX,framer.com,PROXY
+
+  # eshops
+  - DOMAIN-SUFFIX,nike.com,PROXY
+  - DOMAIN-SUFFIX,farfetch.com,PROXY
+
+  # Kinopub
+  - DOMAIN-SUFFIX,kino.pub,PROXY
+
+  # Soundcloud
+  - DOMAIN,soundcloud.com,PROXY
+
+  # Neon
+  - DOMAIN-SUFFIX,neon.tech,PROXY
+
+  # Docsend
+  - DOMAIN,docsend.com,PROXY
+  - DOMAIN-KEYWORD,rightmove,PROXY
+
+  # Proton mail
+  - DOMAIN-SUFFIX,proton.me,PROXY
+
+  # Discord
+  - RULE-SET,discord-domains,PROXY
+  - RULE-SET,discord-ports,PROXY
+
+  # Telegram
+  - DOMAIN-SUFFIX,telegram.org,PROXY
+  - DOMAIN-SUFFIX,telegram.me,PROXY
+  - DOMAIN-SUFFIX,t.me,PROXY
+  - DOMAIN-SUFFIX,telegra.ph,PROXY
+  - DOMAIN-SUFFIX,telesco.pe,PROXY
+  - DOMAIN-SUFFIX,tg.dev,PROXY
+  - IP-CIDR,91.108.4.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.8.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.12.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.16.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.20.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.56.0/22,PROXY,no-resolve
+  - IP-CIDR,91.108.60.0/22,PROXY,no-resolve
+  - IP-CIDR,149.154.160.0/20,PROXY,no-resolve
+  - IP-CIDR,185.76.151.0/24,PROXY,no-resolve
+
+  # Insta & Facebook
+  - DOMAIN-SUFFIX,instagr.am,PROXY
+  - DOMAIN-SUFFIX,cdninstagram.com,PROXY
+  - DOMAIN-KEYWORD,instagram,PROXY
+  - DOMAIN-SUFFIX,facebook.com,PROXY
+  - DOMAIN-SUFFIX,fb.com,PROXY
+  - DOMAIN-SUFFIX,fb.me,PROXY
+  - DOMAIN-SUFFIX,fc2.com,PROXY
+
+  # Youtube & Google video
+  - DOMAIN-SUFFIX,youtu.be,PROXY
+  - DOMAIN-SUFFIX,yt.be,PROXY
+  - DOMAIN-SUFFIX,youtube.com,PROXY
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,PROXY
+  - DOMAIN-SUFFIX,ytimg.com,PROXY
+  - DOMAIN-SUFFIX,ggpht.com,PROXY
+  - DOMAIN-SUFFIX,googlevideo.com,PROXY
+
+  # Linkedin
+  - DOMAIN-SUFFIX,linkedin.com,PROXY
+
+  # Twitter/X
+  - DOMAIN-SUFFIX,twitter.com,PROXY
+  - DOMAIN-SUFFIX,x.com,PROXY
+  - DOMAIN-SUFFIX,twimg.com,PROXY
+  - DOMAIN-SUFFIX,t.co,PROXY
+  - DOMAIN-SUFFIX,twitter.co,PROXY
+  - DOMAIN-SUFFIX,twitterinc.com,PROXY
+  - DOMAIN-SUFFIX,twttr.com,PROXY
+
+  # Notion
+  - DOMAIN-SUFFIX,notion.com,PROXY
+  - DOMAIN-SUFFIX,notion.site,PROXY
+  - DOMAIN-SUFFIX,notion.so,PROXY
+  - DOMAIN-SUFFIX,api.notion.com,PROXY
+  - DOMAIN-SUFFIX,img.notionusercontent.com,PROXY
+  - DOMAIN-SUFFIX,notionusercontent.com,PROXY
+  - DOMAIN-SUFFIX,secure.notion-static.com,PROXY
+  - DOMAIN-SUFFIX,scdn.co,PROXY
+  - DOMAIN-KEYWORD,notion,PROXY
+
+  # Reddit
+  - DOMAIN-SUFFIX,reddit.com,PROXY
+
+  # Китай (напрямую)
+  - GEOIP,CN,DIRECT
+
+  # Всё остальное напрямую
+  - MATCH,DIRECT
