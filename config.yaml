@@ -101,8 +101,27 @@ rules:
   - DOMAIN-SUFFIX,nike.com,PROXY
   - DOMAIN-SUFFIX,farfetch.com,PROXY
 
-  # Kinopub
+  # Kinopub (site, mirrors + rotating streaming/CDN servers — these are why playback sometimes leaks past the proxy)
   - DOMAIN-SUFFIX,kino.pub,PROXY
+  - DOMAIN-SUFFIX,kinopub.online,PROXY
+  - DOMAIN-SUFFIX,kinopub.cc,PROXY
+  - DOMAIN-SUFFIX,kpdl.link,PROXY
+  - DOMAIN-SUFFIX,ahc.ovh,PROXY
+  - DOMAIN-SUFFIX,gfw.ovh,PROXY
+  - DOMAIN-SUFFIX,mos-gorsud.co,PROXY
+  - DOMAIN-SUFFIX,cdn-service.space,PROXY
+  - DOMAIN-SUFFIX,cdn2cdn.com,PROXY
+  - DOMAIN-SUFFIX,cdn2site.com,PROXY
+  - DOMAIN-SUFFIX,cdntogo.net,PROXY
+  - DOMAIN-SUFFIX,cdn32.lol,PROXY
+  - DOMAIN-SUFFIX,flexcdn.cloud,PROXY
+  - DOMAIN-SUFFIX,digital-cdn.net,PROXY
+  - DOMAIN-SUFFIX,mycdn.video,PROXY
+  - DOMAIN-SUFFIX,smarttvcdn.online,PROXY
+  - DOMAIN-SUFFIX,teleos.club,PROXY
+  - DOMAIN-SUFFIX,pushbr.com,PROXY
+  - DOMAIN-SUFFIX,proxykp.xyz,PROXY
+  - DOMAIN-SUFFIX,themoviedb.org,PROXY
 
   # Soundcloud
   - DOMAIN,soundcloud.com,PROXY
@@ -137,6 +156,28 @@ rules:
   - IP-CIDR,91.108.60.0/22,PROXY,no-resolve
   - IP-CIDR,149.154.160.0/20,PROXY,no-resolve
   - IP-CIDR,185.76.151.0/24,PROXY,no-resolve
+
+  # WhatsApp (domains + Meta/WhatsApp IP ranges — calls & media connect by IP, so DNS rules alone miss them)
+  - DOMAIN-SUFFIX,whatsapp.com,PROXY
+  - DOMAIN-SUFFIX,whatsapp.net,PROXY
+  - DOMAIN-SUFFIX,whatsapp.biz,PROXY
+  - DOMAIN-SUFFIX,wa.me,PROXY
+  - DOMAIN-KEYWORD,whatsapp,PROXY
+  - IP-CIDR,31.13.64.0/18,PROXY,no-resolve
+  - IP-CIDR,69.171.224.0/19,PROXY,no-resolve
+  - IP-CIDR,102.132.96.0/20,PROXY,no-resolve
+  - IP-CIDR,157.240.0.0/16,PROXY,no-resolve
+  - IP-CIDR,163.70.128.0/19,PROXY,no-resolve
+  - IP-CIDR,179.60.192.0/22,PROXY,no-resolve
+  - IP-CIDR,185.60.216.0/22,PROXY,no-resolve
+  - IP-CIDR,3.33.221.48/32,PROXY,no-resolve
+  - IP-CIDR,3.33.252.61/32,PROXY,no-resolve
+  - IP-CIDR,15.197.206.217/32,PROXY,no-resolve
+  - IP-CIDR,15.197.210.208/32,PROXY,no-resolve
+  - IP-CIDR,34.192.181.12/32,PROXY,no-resolve
+  - IP-CIDR,34.193.38.112/32,PROXY,no-resolve
+  - IP-CIDR,34.194.71.217/32,PROXY,no-resolve
+  - IP-CIDR,34.194.255.230/32,PROXY,no-resolve
 
   # Insta & Facebook
   - DOMAIN-SUFFIX,instagr.am,PROXY
